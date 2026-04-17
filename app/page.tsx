@@ -1,6 +1,7 @@
 import { getReferenceData, getOfficials } from '@/lib/queries'
 import DirectoryClient from '@/components/DirectoryClient'
 import ElectionCountdown from '@/components/ElectionCountdown'
+import { getNextElection, ELECTION_TYPE_LABELS } from '@/lib/data/election-timetable'
 import Link from 'next/link'
 
 // Revalidate the page once per hour; a deploy always busts the cache too
@@ -16,16 +17,8 @@ export default async function HomePage() {
   const stateCount   = officials.filter(o => o.offices?.level === 'State').length
   const femaleCount  = officials.filter(o => o.gender === 'Female').length
 
-  // Find the nearest upcoming election date
-  const now = new Date()
-  const nextElection = officials
-    .map(o => o.next_election_date)
-    .filter((d): d is string => !!d)
-    .map(d => new Date(d))
-    .filter(d => d > now)
-    .sort((a, b) => a.getTime() - b.getTime())[0]
-
-  const nextElectionStr = nextElection?.toISOString().split('T')[0] ?? null
+  // Get the next upcoming election from the official timetable
+  const nextElection = getNextElection()
 
   return (
     <main className="min-h-screen bg-white">
@@ -70,20 +63,26 @@ export default async function HomePage() {
         </div>
 
         {/* ── Next election countdown ────────────────────────────────────── */}
-        {nextElectionStr && (
+        {nextElection && (
           <div className="mb-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-green-50 border border-green-100 rounded-lg px-4 sm:px-5 py-4">
-            <ElectionCountdown date={nextElectionStr} size="lg" />
-            <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900 mb-1">Next election is approaching</p>
-              <p className="text-xs text-gray-500 mb-2">
+            <ElectionCountdown date={nextElection.date} size="lg" />
+            <div className="flex-1 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-1 flex-wrap">
+                <span className="text-[10px] font-medium bg-white border border-green-200 text-green-700 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                  {ELECTION_TYPE_LABELS[nextElection.type]}
+                </span>
+                <span className="text-[10px] text-gray-400">{nextElection.scope}</span>
+              </div>
+              <p className="text-sm font-semibold text-gray-900 mb-1">{nextElection.title}</p>
+              <p className="text-xs text-gray-500 mb-3">
                 Make sure you're registered and know who represents you.
               </p>
-              <div className="flex gap-2">
-                <Link href="/find" className="text-xs bg-green-800 text-white px-3 py-1.5 rounded-md hover:bg-green-700 transition-colors">
-                  Find my reps
+              <div className="flex gap-2 justify-center sm:justify-start flex-wrap">
+                <Link href="/election-timetable" className="text-xs bg-green-800 text-white px-3 py-1.5 rounded-md hover:bg-green-700 transition-colors">
+                  View timetable
                 </Link>
-                <Link href="/voter-guide" className="text-xs text-green-700 border border-green-200 px-3 py-1.5 rounded-md hover:bg-green-100 transition-colors">
-                  Voter guide
+                <Link href="/find" className="text-xs text-green-700 border border-green-200 px-3 py-1.5 rounded-md hover:bg-green-100 transition-colors">
+                  Find my reps
                 </Link>
               </div>
             </div>
@@ -98,14 +97,18 @@ export default async function HomePage() {
         </div>
 
         {/* ── Voter education CTAs ────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-          <Link href="/find" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors group">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+          <Link href="/find" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
             <p className="text-sm font-semibold text-green-800 mb-1">Find my representatives</p>
-            <p className="text-xs text-green-600">Select your state to see who represents you at every level of government.</p>
+            <p className="text-xs text-green-600">See who represents you at every level of government.</p>
           </Link>
-          <Link href="/voter-guide" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors group">
+          <Link href="/polling-units" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Find my polling unit</p>
+            <p className="text-xs text-green-600">Look up where you vote — 176,846 polling units indexed.</p>
+          </Link>
+          <Link href="/voter-guide" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
             <p className="text-sm font-semibold text-green-800 mb-1">Voter registration guide</p>
-            <p className="text-xs text-green-600">How to register, what to bring, and what to expect on election day.</p>
+            <p className="text-xs text-green-600">How to register, what to bring, and election day.</p>
           </Link>
         </div>
 
@@ -134,6 +137,8 @@ export default async function HomePage() {
           <span>WhoRepresentsMe.ng · Open data · Nigeria</span>
           <div className="flex gap-4">
             <Link href="/find" className="hover:text-gray-600">Find my reps</Link>
+            <Link href="/polling-units" className="hover:text-gray-600">Polling units</Link>
+            <Link href="/election-timetable" className="hover:text-gray-600">Timetable</Link>
             <Link href="/voter-guide" className="hover:text-gray-600">Voter guide</Link>
             <Link href="/contribute" className="hover:text-gray-600">Contribute data</Link>
             <a href="https://inec.gov.ng" target="_blank" rel="noreferrer" className="hover:text-gray-600">INEC</a>
