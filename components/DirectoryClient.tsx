@@ -33,7 +33,8 @@ function matchesOfficeFilter(officeTitle: string | undefined, key: OfficeFilterK
   if (key === 'all') return true
   if (!officeTitle) return false
   const filter = OFFICE_FILTERS.find(f => f.key === key)
-  return filter?.match ? filter.match(officeTitle) : false
+  if (!filter || !('match' in filter)) return false
+  return filter.match(officeTitle)
 }
 
 export default function DirectoryClient({ initialOfficials, states, parties }: Props) {
