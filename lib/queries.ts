@@ -51,7 +51,7 @@ export async function getOfficials(filters: Partial<DirectoryFilters> = {}) {
 
   const { data, error } = await query
   if (error) throw error
-  return data as OfficialWithRefs[]
+  return data as unknown as OfficialWithRefs[]
 }
 
 /** Fetch a single verified official by ID. Throws on not found. */
@@ -64,7 +64,7 @@ export async function getOfficial(id: string) {
     .eq('verified', true)
     .single()
   if (error) throw error
-  return data as OfficialWithRefs
+  return data as unknown as OfficialWithRefs
 }
 
 /** Fetch states, parties, and offices for populating filter dropdowns. */
@@ -137,7 +137,7 @@ export async function upsertOfficial(official: Partial<OfficialWithRefs> & { id?
     ? await supabaseAdmin.from('officials').update(official).eq('id', official.id).select().single()
     : await supabaseAdmin.from('officials').insert(official).select().single()
   if (error) throw error
-  return data as OfficialWithRefs
+  return data as unknown as OfficialWithRefs
 }
 
 // ─── Notes queries ────────────────────────────────────────────────────────────
