@@ -1,0 +1,261 @@
+{
+  "abia": {
+    "file": "abia.json",
+    "lgas": 17,
+    "wards": 184,
+    "polling_units": 4062,
+    "size_kb": 273.4
+  },
+  "adamawa": {
+    "file": "adamawa.json",
+    "lgas": 21,
+    "wards": 226,
+    "polling_units": 4104,
+    "size_kb": 257.1
+  },
+  "akwa ibom": {
+    "file": "akwa-ibom.json",
+    "lgas": 31,
+    "wards": 329,
+    "polling_units": 4353,
+    "size_kb": 286.9
+  },
+  "anambra": {
+    "file": "anambra.json",
+    "lgas": 21,
+    "wards": 326,
+    "polling_units": 5720,
+    "size_kb": 337.3
+  },
+  "bauchi": {
+    "file": "bauchi.json",
+    "lgas": 20,
+    "wards": 212,
+    "polling_units": 5423,
+    "size_kb": 349.3
+  },
+  "bayelsa": {
+    "file": "bayelsa.json",
+    "lgas": 8,
+    "wards": 103,
+    "polling_units": 2244,
+    "size_kb": 131.9
+  },
+  "benue": {
+    "file": "benue.json",
+    "lgas": 23,
+    "wards": 276,
+    "polling_units": 5102,
+    "size_kb": 331.1
+  },
+  "borno": {
+    "file": "borno.json",
+    "lgas": 27,
+    "wards": 311,
+    "polling_units": 5071,
+    "size_kb": 270.9
+  },
+  "cross river": {
+    "file": "cross-river.json",
+    "lgas": 18,
+    "wards": 193,
+    "polling_units": 3281,
+    "size_kb": 203.6
+  },
+  "delta": {
+    "file": "delta.json",
+    "lgas": 25,
+    "wards": 270,
+    "polling_units": 5863,
+    "size_kb": 401.5
+  },
+  "ebonyi": {
+    "file": "ebonyi.json",
+    "lgas": 13,
+    "wards": 170,
+    "polling_units": 2946,
+    "size_kb": 174.6
+  },
+  "edo": {
+    "file": "edo.json",
+    "lgas": 18,
+    "wards": 192,
+    "polling_units": 4519,
+    "size_kb": 328.6
+  },
+  "ekiti": {
+    "file": "ekiti.json",
+    "lgas": 16,
+    "wards": 177,
+    "polling_units": 2445,
+    "size_kb": 180.1
+  },
+  "enugu": {
+    "file": "enugu.json",
+    "lgas": 17,
+    "wards": 256,
+    "polling_units": 4145,
+    "size_kb": 248.4
+  },
+  "fct": {
+    "file": "fct.json",
+    "lgas": 6,
+    "wards": 62,
+    "polling_units": 2822,
+    "size_kb": 187.3
+  },
+  "gombe": {
+    "file": "gombe.json",
+    "lgas": 11,
+    "wards": 114,
+    "polling_units": 2988,
+    "size_kb": 188.0
+  },
+  "imo": {
+    "file": "imo.json",
+    "lgas": 27,
+    "wards": 305,
+    "polling_units": 4758,
+    "size_kb": 280.0
+  },
+  "jigawa": {
+    "file": "jigawa.json",
+    "lgas": 27,
+    "wards": 287,
+    "polling_units": 4522,
+    "size_kb": 274.5
+  },
+  "kaduna": {
+    "file": "kaduna.json",
+    "lgas": 23,
+    "wards": 255,
+    "polling_units": 8012,
+    "size_kb": 488.1
+  },
+  "kano": {
+    "file": "kano.json",
+    "lgas": 44,
+    "wards": 484,
+    "polling_units": 11222,
+    "size_kb": 653.7
+  },
+  "katsina": {
+    "file": "katsina.json",
+    "lgas": 34,
+    "wards": 360,
+    "polling_units": 6652,
+    "size_kb": 409.9
+  },
+  "kebbi": {
+    "file": "kebbi.json",
+    "lgas": 21,
+    "wards": 225,
+    "polling_units": 3743,
+    "size_kb": 227.5
+  },
+  "kogi": {
+    "file": "kogi.json",
+    "lgas": 21,
+    "wards": 239,
+    "polling_units": 3508,
+    "size_kb": 232.8
+  },
+  "kwara": {
+    "file": "kwara.json",
+    "lgas": 16,
+    "wards": 193,
+    "polling_units": 2887,
+    "size_kb": 172.2
+  },
+  "lagos": {
+    "file": "lagos.json",
+    "lgas": 20,
+    "wards": 245,
+    "polling_units": 13325,
+    "size_kb": 887.7
+  },
+  "nasarawa": {
+    "file": "nasarawa.json",
+    "lgas": 13,
+    "wards": 147,
+    "polling_units": 3256,
+    "size_kb": 182.2
+  },
+  "niger": {
+    "file": "niger.json",
+    "lgas": 25,
+    "wards": 274,
+    "polling_units": 4950,
+    "size_kb": 260.8
+  },
+  "ogun": {
+    "file": "ogun.json",
+    "lgas": 20,
+    "wards": 236,
+    "polling_units": 5042,
+    "size_kb": 329.8
+  },
+  "ondo": {
+    "file": "ondo.json",
+    "lgas": 18,
+    "wards": 203,
+    "polling_units": 3933,
+    "size_kb": 289.0
+  },
+  "osun": {
+    "file": "osun.json",
+    "lgas": 30,
+    "wards": 332,
+    "polling_units": 3763,
+    "size_kb": 244.3
+  },
+  "oyo": {
+    "file": "oyo.json",
+    "lgas": 33,
+    "wards": 351,
+    "polling_units": 6390,
+    "size_kb": 391.6
+  },
+  "plateau": {
+    "file": "plateau.json",
+    "lgas": 17,
+    "wards": 205,
+    "polling_units": 4989,
+    "size_kb": 253.2
+  },
+  "rivers": {
+    "file": "rivers.json",
+    "lgas": 23,
+    "wards": 314,
+    "polling_units": 6866,
+    "size_kb": 434.6
+  },
+  "sokoto": {
+    "file": "sokoto.json",
+    "lgas": 23,
+    "wards": 244,
+    "polling_units": 3991,
+    "size_kb": 230.8
+  },
+  "taraba": {
+    "file": "taraba.json",
+    "lgas": 16,
+    "wards": 168,
+    "polling_units": 3597,
+    "size_kb": 225.7
+  },
+  "yobe": {
+    "file": "yobe.json",
+    "lgas": 17,
+    "wards": 178,
+    "polling_units": 2823,
+    "size_kb": 172.4
+  },
+  "zamfara": {
+    "file": "zamfara.json",
+    "lgas": 14,
+    "wards": 147,
+    "polling_units": 3529,
+    "size_kb": 225.1
+  }
+}
