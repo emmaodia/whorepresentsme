@@ -431,7 +431,6 @@ function PlacesAutocomplete({
 
     try {
       // Use the new AutocompleteSuggestion API
-      // @ts-expect-error — @types/google.maps may not have AutocompleteSuggestion yet
       const { suggestions: results } = await google.maps.places.AutocompleteSuggestion.fetchAutocompleteSuggestions({
         input: text,
         includedRegionCodes: ['ng'],
@@ -463,7 +462,6 @@ function PlacesAutocomplete({
 
     try {
       // Use Place.fetchFields to get address components
-      // @ts-expect-error — new API may not be in types yet
       const { Place } = google.maps.places
       const place = new Place({ id: suggestion.placeId })
       await place.fetchFields({ fields: ['addressComponents'] })
