@@ -97,7 +97,8 @@ export default async function HomePage() {
         </div>
 
         {/* ── Voter education CTAs ────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+
           <Link href="/find" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
             <p className="text-sm font-semibold text-green-800 mb-1">Find my representatives</p>
             <p className="text-xs text-green-600">See who represents you at every level of government.</p>
@@ -109,6 +110,30 @@ export default async function HomePage() {
           <Link href="/voter-guide" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
             <p className="text-sm font-semibold text-green-800 mb-1">Voter registration guide</p>
             <p className="text-xs text-green-600">How to register, what to bring, and election day.</p>
+          </Link>
+          <Link href="/constituency" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Find my constituency</p>
+            <p className="text-xs text-green-600">Discover every constituency covering your location — and which offices you can run for.</p>
+          </Link>
+          <Link href="/offices" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Nigerian elective offices</p>
+            <p className="text-xs text-green-600">Roles, powers, and qualifications for every elected office.</p>
+          </Link>
+          <Link href="/run-for-office" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors col-span-2 sm:col-span-1">
+            <p className="text-sm font-semibold text-green-800 mb-1">How to run for office</p>
+            <p className="text-xs text-green-600">Party primaries, INEC nomination, campaign finance.</p>
+          </Link>
+          <Link href="/representation" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Women & youth in politics</p>
+            <p className="text-xs text-green-600">Data on gender and age across every tier of government.</p>
+          </Link>
+          <Link href="/parties" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Political party profiles</p>
+            <p className="text-xs text-green-600">History, ideology, and seat counts for APC, PDP, LP, and more.</p>
+          </Link>
+          <Link href="/states" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Browse by state</p>
+            <p className="text-xs text-green-600">All 36 states and FCT — governors, senators, and assembly members.</p>
           </Link>
         </div>
 
@@ -140,6 +165,12 @@ export default async function HomePage() {
             <Link href="/polling-units" className="hover:text-gray-600">Polling units</Link>
             <Link href="/election-timetable" className="hover:text-gray-600">Timetable</Link>
             <Link href="/voter-guide" className="hover:text-gray-600">Voter guide</Link>
+            <Link href="/constituency" className="hover:text-gray-600">My constituency</Link>
+            <Link href="/states" className="hover:text-gray-600">States</Link>
+            <Link href="/parties" className="hover:text-gray-600">Parties</Link>
+            <Link href="/representation" className="hover:text-gray-600">Representation</Link>
+            <Link href="/offices" className="hover:text-gray-600">Offices</Link>
+            <Link href="/run-for-office" className="hover:text-gray-600">Run for office</Link>
             <Link href="/contribute" className="hover:text-gray-600">Contribute data</Link>
             <a href="https://inec.gov.ng" target="_blank" rel="noreferrer" className="hover:text-gray-600">INEC</a>
           </div>

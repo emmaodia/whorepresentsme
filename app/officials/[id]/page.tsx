@@ -5,6 +5,7 @@ import Image from 'next/image'
 import ElectionCountdown from '@/components/ElectionCountdown'
 import ScorecardBadges from '@/components/ScorecardBadges'
 import ShareButtons from '@/components/ShareButtons'
+import { getSlugForOfficeTitle } from '@/lib/data/elective-offices'
 import type { Metadata } from 'next'
 
 export const revalidate = 3600
@@ -86,6 +87,7 @@ export default async function OfficialPage({ params }: Props) {
   }
 
   const { parties: party, offices: office, states: state } = official
+  const officeSlug = getSlugForOfficeTitle(office?.title)
 
   return (
     <main className="min-h-screen bg-white">
@@ -113,10 +115,10 @@ export default async function OfficialPage({ params }: Props) {
               alt={official.full_name}
               width={72}
               height={72}
-              className="rounded-full object-cover flex-shrink-0"
+              className="rounded-full object-cover shrink-0"
             />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-green-50 border border-green-100 flex items-center justify-center text-lg font-semibold text-green-800 flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-green-50 border border-green-100 flex items-center justify-center text-lg font-semibold text-green-800 shrink-0">
               {official.full_name.split(' ').slice(0, 2).map(n => n[0]).join('')}
             </div>
           )}
@@ -214,6 +216,52 @@ export default async function OfficialPage({ params }: Props) {
           </div>
         </section>
 
+        {/* ── Contact & accountability ──────────────────────────────────── */}
+        {(official.official_email || official.twitter_handle || official.phone) && (
+          <section className="mb-6">
+            <h2 className="text-xs text-gray-400 uppercase tracking-wide mb-3">Hold them accountable</h2>
+            <div className="bg-gray-50 border border-gray-100 rounded-xl p-4">
+              <p className="text-xs text-gray-500 mb-3">
+                Use the message below or write your own — then send it via email, Twitter, or WhatsApp.
+              </p>
+              <textarea
+                readOnly
+                className="w-full text-sm text-gray-700 bg-white border border-gray-200 rounded-lg p-3 resize-none focus:outline-none focus:ring-1 focus:ring-green-700 mb-3"
+                rows={4}
+                defaultValue={`Dear ${official.full_name},\n\nAs your constituent in ${official.constituency ?? official.states?.name ?? 'your constituency'}, I am writing to request an update on your activities in office and how you are serving the people who elected you.\n\nPlease share your recent legislative/executive actions and how we can stay informed.\n\nThank you.`}
+              />
+              <div className="flex gap-2 flex-wrap">
+                {official.official_email && (
+                  <a
+                    href={`mailto:${official.official_email}?subject=Message from your constituent&body=Dear ${encodeURIComponent(official.full_name)},%0A%0AAs your constituent...`}
+                    className="text-xs bg-green-800 text-white px-3 py-1.5 rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    Send email
+                  </a>
+                )}
+                {official.twitter_handle && (
+                  <a
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`@${official.twitter_handle} As your constituent in ${official.constituency ?? official.states?.name ?? 'your constituency'}, I'd like to know how you are serving us. #NigeriaAccountability`)}`}
+                    target="_blank" rel="noreferrer"
+                    className="text-xs border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    Tweet @{official.twitter_handle}
+                  </a>
+                )}
+                {official.phone && (
+                  <a
+                    href={`https://wa.me/${official.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Dear ${official.full_name}, as your constituent I am writing to request an update on your activities in office.`)}`}
+                    target="_blank" rel="noreferrer"
+                    className="text-xs border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    WhatsApp
+                  </a>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ── Share ──────────────────────────────────────────────────────── */}
         <section className="mb-6">
           <ShareButtons
@@ -221,6 +269,21 @@ export default async function OfficialPage({ params }: Props) {
             text={`${official.full_name} — ${office?.title ?? 'Official'}${official.constituency ? `, ${official.constituency}` : ''}${state?.name ? ` (${state.name})` : ''} | WhoRepresentsMe.ng`}
           />
         </section>
+
+        {/* ── Office info link ──────────────────────────────────────────── */}
+        {officeSlug && (
+          <div className="mb-6 bg-green-50 border border-green-100 rounded-lg px-4 py-3 flex items-center justify-between gap-3">
+            <p className="text-xs text-green-800">
+              Want to know more about the role of {office?.title}?
+            </p>
+            <Link
+              href={`/offices/${officeSlug}`}
+              className="text-xs text-green-700 border border-green-200 bg-white rounded px-3 py-1.5 hover:bg-green-100 transition-colors whitespace-nowrap"
+            >
+              About this office →
+            </Link>
+          </div>
+        )}
 
         {/* ── Footer meta ───────────────────────────────────────────────── */}
         <div className="border-t border-gray-100 pt-4 flex items-center justify-between gap-3 flex-wrap">
