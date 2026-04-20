@@ -99,6 +99,31 @@ export async function submitContribution(payload: {
   if (error) throw error
 }
 
+/** Fetch states using the admin client — safe to call from generateStaticParams at build time. */
+export async function getStatesAdmin() {
+  const { data, error } = await supabaseAdmin.from('states').select('*').order('name')
+  if (error) throw error
+  return data ?? []
+}
+
+/**
+ * Fetch officials for a single state, filtered by state_id (the direct FK column).
+ * This is more reliable than filtering via the embedded `states.name` resource
+ * which PostgREST does not support in this schema.
+ */
+export async function getOfficialsByStateId(stateId: number) {
+  const sb = await createServerSupabase()
+  const { data, error } = await sb
+    .from('officials')
+    .select(OFFICIALS_SELECT)
+    .eq('status', 'active')
+    .eq('verified', true)
+    .eq('state_id', stateId)
+    .order('full_name')
+  if (error) throw error
+  return data as unknown as OfficialWithRefs[]
+}
+
 // ─── Admin queries (bypass RLS via service key) ───────────────────────────────
 
 /** All contributions with status = 'pending', oldest first. */
