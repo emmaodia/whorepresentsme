@@ -100,10 +100,10 @@ export async function submitContribution(payload: {
 }
 
 /** Fetch states using the admin client — safe to call from generateStaticParams at build time. */
-export async function getStatesAdmin() {
+export async function getStatesAdmin(): Promise<Array<{ id: number; name: string; slug: string; zone: string | null }>> {
   const { data, error } = await supabaseAdmin.from('states').select('*').order('name')
   if (error) throw error
-  return data ?? []
+  return (data ?? []) as Array<{ id: number; name: string; slug: string; zone: string | null }>
 }
 
 /**

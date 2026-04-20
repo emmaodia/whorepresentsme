@@ -41,6 +41,6 @@ function getAdminClient() {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const supabaseAdmin = new Proxy({} as ReturnType<typeof createClient>, {
+export const supabaseAdmin: any = new Proxy({} as any, {
   get(_, prop) { return (getAdminClient() as any)[prop] },
 })
