@@ -26,8 +26,21 @@ export async function createServerSupabase() {
 }
 
 // ─── Admin instance (bypasses RLS — server-side only, never expose to client) ─
-export const supabaseAdmin = createClient(
-  supabaseUrl,
-  process.env.SUPABASE_SERVICE_KEY!,
-  { auth: { autoRefreshToken: false, persistSession: false } }
-)
+// Lazily initialised so module evaluation during build doesn't throw when env
+// vars are not yet injected by Vercel.
+let _adminClient: ReturnType<typeof createClient> | null = null
+function getAdminClient() {
+  if (!_adminClient) {
+    _adminClient = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_KEY!,
+      { auth: { autoRefreshToken: false, persistSession: false } }
+    )
+  }
+  return _adminClient
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const supabaseAdmin = new Proxy({} as ReturnType<typeof createClient>, {
+  get(_, prop) { return (getAdminClient() as any)[prop] },
+})
