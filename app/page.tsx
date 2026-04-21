@@ -107,9 +107,9 @@ export default async function HomePage() {
             <p className="text-sm font-semibold text-green-800 mb-1">Find my polling unit</p>
             <p className="text-xs text-green-600">Look up where you vote — 176,846 polling units indexed.</p>
           </Link>
-          <Link href="/voter-guide" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
-            <p className="text-sm font-semibold text-green-800 mb-1">Voter registration guide</p>
-            <p className="text-xs text-green-600">How to register, what to bring, and election day.</p>
+          <Link href="/voter-registration" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
+            <p className="text-sm font-semibold text-green-800 mb-1">Voter registration & PVC</p>
+            <p className="text-xs text-green-600">Find your nearest INEC office — all 774 LGA offices listed.</p>
           </Link>
           <Link href="/constituency" className="bg-green-50 border border-green-100 rounded-lg px-4 py-4 hover:bg-green-100 transition-colors">
             <p className="text-sm font-semibold text-green-800 mb-1">Find my constituency</p>
@@ -165,6 +165,7 @@ export default async function HomePage() {
             <Link href="/polling-units" className="hover:text-gray-600">Polling units</Link>
             <Link href="/election-timetable" className="hover:text-gray-600">Timetable</Link>
             <Link href="/voter-guide" className="hover:text-gray-600">Voter guide</Link>
+            <Link href="/voter-registration" className="hover:text-gray-600">Register to vote</Link>
             <Link href="/constituency" className="hover:text-gray-600">My constituency</Link>
             <Link href="/states" className="hover:text-gray-600">States</Link>
             <Link href="/parties" className="hover:text-gray-600">Parties</Link>
