@@ -19,9 +19,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const info = Object.values(PARTY_INFO).find(p => p.slug === slug)
-  if (!info) return { title: 'Party | WhoRepresentsMe.ng' }
+  if (!info) return { title: 'Party | MyReps.ng' }
   return {
-    title: `${info.abbreviation} — ${info.fullName} | WhoRepresentsMe.ng`,
+    title: `${info.abbreviation} — ${info.fullName} | MyReps.ng`,
     description: info.summary,
   }
 }
@@ -64,7 +64,7 @@ export default async function PartyPage({ params }: Props) {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/parties" className="text-sm text-gray-500 hover:text-gray-700">All parties</Link>
         </div>

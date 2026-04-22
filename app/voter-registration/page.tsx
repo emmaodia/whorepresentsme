@@ -6,7 +6,7 @@ import { INEC_STATE_OFFICES } from '@/lib/data/inec-offices'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Voter Registration & PVC Collection — WhoRepresentsMe.ng',
+  title: 'Voter Registration & PVC Collection — MyReps.ng',
   description: "Find INEC registration offices near you across all 36 states and the FCT. Locate your state and LGA office to register to vote or collect your Permanent Voter's Card.",
 }
 
@@ -18,7 +18,7 @@ export default function VoterRegistrationPage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <div className="flex gap-2 text-xs">
             <Link href="/voter-guide" className="text-gray-500 hover:text-gray-700 py-1.5">Voter guide</Link>

@@ -33,7 +33,7 @@ export default async function HomePage() {
               <div className="w-2 bg-green-800" />
             </div>
             <span className="text-base font-semibold text-green-800 tracking-tight">
-              WhoRepresentsMe<span className="text-gray-400">.ng</span>
+              MyReps<span className="text-gray-400">.ng</span>
             </span>
           </div>
           <div className="flex gap-2">
@@ -159,7 +159,7 @@ export default async function HomePage() {
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className="border-t border-gray-100 mt-12 px-4 py-6">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
-          <span>WhoRepresentsMe.ng · Open data · Nigeria</span>
+          <span>MyReps.ng · Open data · Nigeria</span>
           <div className="flex gap-4">
             <Link href="/find" className="hover:text-gray-600">Find my reps</Link>
             <Link href="/polling-units" className="hover:text-gray-600">Polling units</Link>

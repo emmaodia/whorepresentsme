@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
   try {
     const o = await getOfficial(id)
-    const title = `${o.full_name} — ${o.offices?.title ?? 'Official'} | WhoRepresentsMe.ng`
+    const title = `${o.full_name} — ${o.offices?.title ?? 'Official'} | MyReps.ng`
     const description = [
       o.offices?.title,
       o.constituency,
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     }
   } catch {
-    return { title: 'Official | WhoRepresentsMe.ng' }
+    return { title: 'Official | MyReps.ng' }
   }
 }
 
@@ -94,7 +94,7 @@ export default async function OfficialPage({ params }: Props) {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/contribute" className="text-sm text-green-700 border border-green-200 rounded px-3 py-1.5 hover:bg-green-50 transition-colors">
             Submit an official
@@ -266,7 +266,7 @@ export default async function OfficialPage({ params }: Props) {
         <section className="mb-6">
           <ShareButtons
             url={`/officials/${official.id}`}
-            text={`${official.full_name} — ${office?.title ?? 'Official'}${official.constituency ? `, ${official.constituency}` : ''}${state?.name ? ` (${state.name})` : ''} | WhoRepresentsMe.ng`}
+            text={`${official.full_name} — ${office?.title ?? 'Official'}${official.constituency ? `, ${official.constituency}` : ''}${state?.name ? ` (${state.name})` : ''} | MyReps.ng`}
           />
         </section>
 

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Voter Registration & Election Day Guide | WhoRepresentsMe.ng',
+  title: 'Voter Registration & Election Day Guide | MyReps.ng',
   description: 'Everything you need to know about voter registration, what to bring on election day, and how voting works in Nigeria.',
 }
 
@@ -17,7 +17,7 @@ export default function VoterGuidePage() {
               <div className="w-2 bg-green-800" />
             </div>
             <span className="text-base font-semibold text-green-800 tracking-tight">
-              WhoRepresentsMe<span className="text-gray-400">.ng</span>
+              MyReps<span className="text-gray-400">.ng</span>
             </span>
           </Link>
           <div className="flex gap-3 text-xs">
@@ -177,7 +177,7 @@ export default function VoterGuidePage() {
             This guide is for informational purposes. For official and up-to-date information,
             visit <a href="https://inecnigeria.org" target="_blank" rel="noreferrer" className="underline hover:text-gray-600">inecnigeria.org</a>.
           </p>
-          <p>WhoRepresentsMe.ng · Open data · Nigeria</p>
+          <p>MyReps.ng · Open data · Nigeria</p>
         </div>
       </footer>
     </main>

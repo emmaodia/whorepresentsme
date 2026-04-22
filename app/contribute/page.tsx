@@ -213,7 +213,7 @@ export default function ContributePage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-2xl mx-auto">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
         </div>
       </header>

@@ -3,7 +3,7 @@ import { ELECTIVE_OFFICES, getOfficesByLevel, LEVEL_LABELS } from '@/lib/data/el
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Nigerian Elective Offices — WhoRepresentsMe.ng',
+  title: 'Nigerian Elective Offices — MyReps.ng',
   description: 'Understand every elected office in Nigeria — roles, qualifications, powers, and how they relate to each other.',
 }
 
@@ -15,7 +15,7 @@ export default function OfficesPage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/run-for-office" className="text-sm text-green-700 border border-green-200 rounded px-3 py-1.5 hover:bg-green-50 transition-colors">
             How to run for office →

@@ -84,7 +84,7 @@ export default function PWAProvider() {
                 WRM
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">Install WhoRepresentsMe</p>
+                <p className="text-sm font-medium text-gray-900 truncate">Install MyReps</p>
                 <p className="text-xs text-gray-500">Access your reps anytime, even offline</p>
               </div>
             </div>

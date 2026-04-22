@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
               <div style={{ width: '10px', backgroundColor: '#166534' }} />
             </div>
             <span style={{ fontSize: '18px', fontWeight: 700, color: '#166534' }}>
-              WhoRepresentsMe.ng
+              MyReps.ng
             </span>
           </div>
           {electionDays && (
@@ -183,7 +183,7 @@ export async function GET(req: NextRequest) {
           }}
         >
           <p style={{ fontSize: '14px', color: '#9ca3af', margin: 0 }}>
-            Know who represents you · whorepresentsme.ng
+            Know who represents you · myreps.ng
           </p>
           <p style={{ fontSize: '14px', color: '#166534', fontWeight: 600, margin: 0 }}>
             Find your representatives →

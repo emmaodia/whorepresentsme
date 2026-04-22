@@ -7,7 +7,7 @@ import { STATES_WITH_ASSEMBLY_DATA } from '@/lib/data/state-assembly-map'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Find Your Constituency — WhoRepresentsMe.ng',
+  title: 'Find Your Constituency — MyReps.ng',
   description: 'Enter your address or LGA to see every constituency that covers your area — senatorial, federal, state assembly, and LGA — and find the offices you can run for.',
 }
 
@@ -25,7 +25,7 @@ export default async function ConstituencyPage() {
               <div className="w-2 bg-green-800" />
             </div>
             <span className="text-base font-semibold text-green-800 tracking-tight">
-              WhoRepresentsMe<span className="text-gray-400">.ng</span>
+              MyReps<span className="text-gray-400">.ng</span>
             </span>
           </Link>
           <div className="flex gap-2 text-xs">

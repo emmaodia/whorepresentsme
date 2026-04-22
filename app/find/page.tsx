@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const revalidate = 3600
 
 export const metadata = {
-  title: 'Find My Representatives | WhoRepresentsMe.ng',
+  title: 'Find My Representatives | MyReps.ng',
   description: 'Enter your state to find all the elected officials who represent you at the federal and state level.',
 }
 
@@ -26,7 +26,7 @@ export default async function FindPage() {
               <div className="w-2 bg-green-800" />
             </div>
             <span className="text-base font-semibold text-green-800 tracking-tight">
-              WhoRepresentsMe<span className="text-gray-400">.ng</span>
+              MyReps<span className="text-gray-400">.ng</span>
             </span>
           </Link>
           <div className="flex gap-3 text-xs">

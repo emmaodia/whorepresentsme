@@ -28,7 +28,7 @@ export default async function AdminQueuePage() {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link href="/" className="text-sm font-semibold text-gray-900">
-              WhoRepresentsMe Admin
+              MyReps Admin
             </Link>
             {pending.length > 0 && (
               <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-medium">

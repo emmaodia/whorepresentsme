@@ -3,7 +3,7 @@ import { ELECTIVE_OFFICES } from '@/lib/data/elective-offices'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'How to Run for Office in Nigeria — WhoRepresentsMe.ng',
+  title: 'How to Run for Office in Nigeria — MyReps.ng',
   description: 'A step-by-step guide to becoming a candidate for elected office in Nigeria — from joining a party to election day.',
 }
 
@@ -149,7 +149,7 @@ export default function RunForOfficePage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/offices" className="text-sm text-green-700 border border-green-200 rounded px-3 py-1.5 hover:bg-green-50 transition-colors">
             Browse offices

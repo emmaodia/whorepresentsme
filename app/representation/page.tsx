@@ -6,7 +6,7 @@ import type { OfficialWithRefs } from '@/lib/types'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Women & Youth in Nigerian Politics — WhoRepresentsMe.ng',
+  title: 'Women & Youth in Nigerian Politics — MyReps.ng',
   description: 'Data-driven look at gender and age representation across every tier of elected government in Nigeria.',
 }
 
@@ -115,7 +115,7 @@ export default async function RepresentationPage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
             Full directory →
@@ -253,7 +253,7 @@ export default async function RepresentationPage() {
 
         {/* ── Footer note ───────────────────────────────────────────────── */}
         <p className="mt-8 text-xs text-gray-400">
-          Data reflects verified officials in the WhoRepresentsMe.ng directory as of the last update.
+          Data reflects verified officials in the MyReps.ng directory as of the last update.
           Officials with no gender or date-of-birth records are excluded from those specific calculations.
           <Link href="/contribute" className="text-green-700 hover:underline ml-1">Help us fill the gaps →</Link>
         </p>

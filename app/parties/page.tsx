@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Nigerian Political Parties — WhoRepresentsMe.ng',
+  title: 'Nigerian Political Parties — MyReps.ng',
   description: 'Profiles of registered Nigerian political parties — history, ideology, and how many elected officials each party holds.',
 }
 
@@ -44,7 +44,7 @@ export default async function PartiesPage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">Full directory →</Link>
         </div>

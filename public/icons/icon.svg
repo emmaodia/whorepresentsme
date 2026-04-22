@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#166534"/>
+  <!-- Nigeria flag stripes -->
+  <rect x="96" y="176" width="40" height="160" rx="4" fill="#ffffff" opacity="0.3"/>
+  <rect x="148" y="176" width="40" height="160" rx="4" fill="#ffffff" opacity="0.15"/>
+  <rect x="200" y="176" width="40" height="160" rx="4" fill="#ffffff" opacity="0.3"/>
+  <!-- WRM text -->
+  <text x="256" y="300" text-anchor="middle" font-family="system-ui,sans-serif" font-size="120" font-weight="800" fill="#ffffff">WRM</text>
+  <text x="256" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" font-weight="600" fill="#bbf7d0">.ng</text>
+</svg>

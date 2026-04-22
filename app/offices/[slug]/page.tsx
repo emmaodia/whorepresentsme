@@ -14,9 +14,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const office = getOffice(slug)
-  if (!office) return { title: 'Office | WhoRepresentsMe.ng' }
+  if (!office) return { title: 'Office | MyReps.ng' }
   return {
-    title: `${office.shortTitle} — Nigerian Elective Office | WhoRepresentsMe.ng`,
+    title: `${office.shortTitle} — Nigerian Elective Office | MyReps.ng`,
     description: office.summary,
   }
 }
@@ -35,7 +35,7 @@ export default async function OfficePage({ params }: Props) {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <Link href="/run-for-office" className="text-xs sm:text-sm text-green-700 border border-green-200 rounded px-3 py-1.5 hover:bg-green-50 transition-colors">
             How to run for office →

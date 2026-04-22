@@ -67,7 +67,7 @@ export default function LoginPage() {
               <div className="w-2 bg-green-800" />
             </div>
             <span className="text-base font-semibold text-green-800 tracking-tight">
-              WhoRepresentsMe<span className="text-gray-400">.ng</span>
+              MyReps<span className="text-gray-400">.ng</span>
             </span>
           </div>
           <p className="text-sm text-gray-500">Admin panel · Sign in</p>

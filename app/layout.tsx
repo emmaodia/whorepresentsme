@@ -3,14 +3,14 @@ import './globals.css'
 import PWAProvider from '@/components/PWAProvider'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://whorepresentsme.ng'),
-  title: 'WhoRepresentsMe.ng',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://myreps.ng'),
+  title: 'MyReps.ng',
   description: 'A public, open-source directory of every elected official in Nigeria.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'WhoRepresentsMe',
+    title: 'MyReps',
   },
 }
 

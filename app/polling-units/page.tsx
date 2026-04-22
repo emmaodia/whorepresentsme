@@ -2,7 +2,7 @@ import Link from 'next/link'
 import PollingUnitLookup from '@/components/PollingUnitLookup'
 
 export const metadata = {
-  title: 'Find Your Polling Unit | WhoRepresentsMe.ng',
+  title: 'Find Your Polling Unit | MyReps.ng',
   description: 'Look up your polling unit by state, LGA, and ward. Find the exact name, location, and code of where you vote.',
 }
 
@@ -18,7 +18,7 @@ export default function PollingUnitsPage() {
               <div className="w-2 bg-green-800" />
             </div>
             <span className="text-base font-semibold text-green-800 tracking-tight">
-              WhoRepresentsMe<span className="text-gray-400">.ng</span>
+              MyReps<span className="text-gray-400">.ng</span>
             </span>
           </Link>
           <div className="flex gap-2 text-xs">

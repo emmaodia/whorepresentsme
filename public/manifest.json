@@ -1,0 +1,47 @@
+{
+  "name": "MyReps.ng",
+  "short_name": "MyReps",
+  "description": "Find your elected representatives across every level of Nigerian government.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#166534",
+  "orientation": "portrait-primary",
+  "categories": ["government", "education", "news"],
+  "lang": "en-NG",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Find My Representatives",
+      "short_name": "Find Reps",
+      "url": "/find",
+      "description": "Look up who represents you by state and LGA"
+    },
+    {
+      "name": "Find My Polling Unit",
+      "short_name": "Polling Unit",
+      "url": "/polling-units",
+      "description": "Look up where you vote by state, LGA, and ward"
+    },
+    {
+      "name": "Voter Guide",
+      "short_name": "Voter Guide",
+      "url": "/voter-guide",
+      "description": "Registration and election day guide"
+    }
+  ]
+}

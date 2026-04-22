@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Nigerian States — WhoRepresentsMe.ng',
+  title: 'Nigerian States — MyReps.ng',
   description: 'Browse elected officials by state — all 36 states and the FCT. Governors, senators, HOR members, and state assembly representatives.',
 }
 
@@ -28,7 +28,7 @@ export default async function StatesPage() {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <div className="flex gap-2 text-xs">
             <Link href="/find" className="text-green-700 border border-green-200 rounded px-3 py-1.5 hover:bg-green-50 transition-colors">

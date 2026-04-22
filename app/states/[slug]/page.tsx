@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const states = await getStatesAdmin()
   const state = states.find(s => s.slug === slug)
-  if (!state) return { title: 'State | WhoRepresentsMe.ng' }
+  if (!state) return { title: 'State | MyReps.ng' }
   return {
-    title: `${state.name} — Elected Officials | WhoRepresentsMe.ng`,
+    title: `${state.name} — Elected Officials | MyReps.ng`,
     description: `All verified elected officials for ${state.name} State — governor, senators, HOR members, and state assembly.`,
   }
 }
@@ -82,7 +82,7 @@ export default async function StatePage({ params }: Props) {
       <header className="border-b border-gray-200 px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-base font-semibold text-green-800 tracking-tight">
-            WhoRepresentsMe<span className="text-gray-400">.ng</span>
+            MyReps<span className="text-gray-400">.ng</span>
           </Link>
           <div className="flex gap-2 text-xs">
             <Link href="/states" className="text-gray-500 hover:text-gray-700 py-1.5">All states</Link>
