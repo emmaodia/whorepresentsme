@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Prevent any element from causing horizontal scroll */
+html,
+body {
+  overflow-x: clip;
+}
+
 /* Push page content above the PWA install banner when it is visible */
 body {
   padding-bottom: var(--install-banner-h, 0px);

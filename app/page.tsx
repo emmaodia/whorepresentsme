@@ -158,9 +158,9 @@ export default async function HomePage() {
 
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className="border-t border-gray-100 mt-12 px-4 py-6">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
-          <span>MyReps.ng · Open data · Nigeria</span>
-          <div className="flex gap-4">
+        <div className="max-w-5xl mx-auto text-xs text-gray-400">
+          <p className="text-center sm:text-left mb-3">MyReps.ng · Open data · Nigeria</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center sm:justify-start">
             <Link href="/find" className="hover:text-gray-600">Find my reps</Link>
             <Link href="/polling-units" className="hover:text-gray-600">Polling units</Link>
             <Link href="/election-timetable" className="hover:text-gray-600">Timetable</Link>
