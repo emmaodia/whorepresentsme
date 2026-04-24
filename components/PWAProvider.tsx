@@ -74,7 +74,7 @@ export default function PWAProvider() {
     } else {
       el.style.removeProperty('--install-banner-h')
     }
-    return () => el.style.removeProperty('--install-banner-h')
+    return () => { el.style.removeProperty('--install-banner-h') }
   }, [showInstallBanner, dismissed])
 
   return (
