@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Push page content above the PWA install banner when it is visible */
+body {
+  padding-bottom: var(--install-banner-h, 0px);
+}

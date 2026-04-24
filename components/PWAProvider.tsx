@@ -66,6 +66,17 @@ export default function PWAProvider() {
     sessionStorage.setItem('pwa-install-dismissed', '1')
   }
 
+  // Push page content up so the fixed banner never covers it
+  useEffect(() => {
+    const el = document.documentElement
+    if (showInstallBanner && !dismissed) {
+      el.style.setProperty('--install-banner-h', '72px')
+    } else {
+      el.style.removeProperty('--install-banner-h')
+    }
+    return () => el.style.removeProperty('--install-banner-h')
+  }, [showInstallBanner, dismissed])
+
   return (
     <>
       {/* Offline indicator */}
@@ -77,7 +88,10 @@ export default function PWAProvider() {
 
       {/* Install banner */}
       {showInstallBanner && !dismissed && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg px-4 py-3 safe-bottom">
+        <div
+          className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg px-4 py-3"
+          style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
+        >
           <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
               <div className="w-10 h-10 rounded-lg bg-green-800 flex items-center justify-center text-white text-xs font-bold shrink-0">
