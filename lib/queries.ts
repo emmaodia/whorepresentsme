@@ -99,6 +99,74 @@ export async function submitContribution(payload: {
   if (error) throw error
 }
 
+// ─── LGA / Ward queries ───────────────────────────────────────────────────────
+
+/** All LGAs for a given state (by state name). */
+export async function getLGAsForStateName(stateName: string) {
+  const sb = await createServerSupabase()
+  const { data, error } = await sb
+    .from('lgas')
+    .select('id, name, headquarters, state_id')
+    .eq('states.name', stateName)   // join filter via embedded resource
+    .order('name')
+  // Fallback: look up state_id first, then filter — more reliable without FK hints
+  if (error || !data?.length) {
+    const { data: stateData } = await sb.from('states').select('id').eq('name', stateName).single()
+    if (!stateData) return []
+    const { data: lgaData, error: lgaErr } = await sb
+      .from('lgas').select('id, name, headquarters').eq('state_id', stateData.id).order('name')
+    if (lgaErr) throw lgaErr
+    return lgaData ?? []
+  }
+  return data
+}
+
+/** All wards for a given LGA (by lga_id). */
+export async function getWardsForLGA(lgaId: number) {
+  const sb = await createServerSupabase()
+  const { data, error } = await sb
+    .from('wards')
+    .select('id, name')
+    .eq('lga_id', lgaId)
+    .order('name')
+  if (error) throw error
+  return data ?? []
+}
+
+/** LGA officials (chairmen, vice-chairmen) for a state. */
+export async function getLGAOfficials(stateId: number) {
+  const sb = await createServerSupabase()
+  const { data, error } = await sb
+    .from('officials')
+    .select(`id, full_name, gender, constituency, status, verified,
+             offices ( title, level, category ),
+             parties ( name, abbreviation, color_hex ),
+             lgas    ( id, name, headquarters )`)
+    .eq('state_id', stateId)
+    .not('lga_id', 'is', null)
+    .eq('status', 'active')
+    .order('full_name')
+  if (error) throw error
+  return data ?? []
+}
+
+/** Ward councillors for a specific LGA. */
+export async function getWardCouncillors(lgaId: number) {
+  const sb = await createServerSupabase()
+  const { data, error } = await sb
+    .from('officials')
+    .select(`id, full_name, gender, constituency, status, verified,
+             offices ( title, level, category ),
+             parties ( name, abbreviation, color_hex ),
+             wards   ( id, name )`)
+    .eq('lga_id', lgaId)
+    .not('ward_id', 'is', null)
+    .eq('status', 'active')
+    .order('full_name')
+  if (error) throw error
+  return data ?? []
+}
+
 /** Fetch states using the admin client — safe to call from generateStaticParams at build time. */
 export async function getStatesAdmin(): Promise<Array<{ id: number; name: string; slug: string; zone: string | null }>> {
   const { data, error } = await supabaseAdmin.from('states').select('*').order('name')
