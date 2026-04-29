@@ -198,6 +198,88 @@ const ASSEMBLY_MAP: Record<string, AssemblyMapEntry> = {
     'Oorelope':           ['Oorelope'],
   },
 
+  // ──────────────────────────────────────────────────────────────────
+  // DELTA — 29 constituencies across 25 LGAs
+  // ──────────────────────────────────────────────────────────────────
+  'Delta': {
+    'Oshimili North':   ['Oshimili North'],
+    'Oshimili South':   ['Oshimili South I', 'Oshimili South II'],
+    'Aniocha North':    ['Aniocha North'],
+    'Aniocha South':    ['Aniocha South I', 'Aniocha South II'],
+    'Ika North-East':   ['Ika North-East I', 'Ika North-East II'],
+    'Ika South':        ['Ika South'],
+    'Ndokwa East':      ['Ndokwa East'],
+    'Ndokwa West':      ['Ndokwa West'],
+    'Ukwuani':          ['Ukwuani'],
+    'Isoko North':      ['Isoko North'],
+    'Isoko South':      ['Isoko South I', 'Isoko South II'],
+    'Ethiope East':     ['Ethiope East'],
+    'Ethiope West':     ['Ethiope West'],
+    'Sapele':           ['Sapele I', 'Sapele II'],
+    'Okpe':             ['Okpe'],
+    'Uvwie':            ['Uvwie I', 'Uvwie II'],
+    'Udu':              ['Udu'],
+    'Warri South':      ['Warri South I', 'Warri South II'],
+    'Warri North':      ['Warri North'],
+    'Warri South-West': ['Warri South-West'],
+    'Ughelli North':    ['Ughelli North I', 'Ughelli North II'],
+    'Ughelli South':    ['Ughelli South'],
+    'Bomadi':           ['Bomadi'],
+    'Burutu':           ['Burutu I', 'Burutu II'],
+    'Patani':           ['Patani'],
+  },
+
+  // ──────────────────────────────────────────────────────────────────
+  // ANAMBRA — 30 constituencies across 21 LGAs
+  // Term: 2022–2026 (off-cycle from federal election)
+  // ──────────────────────────────────────────────────────────────────
+  'Anambra': {
+    'Aguata':            ['Aguata I', 'Aguata II'],
+    'Anambra East':      ['Anambra East'],
+    'Anambra West':      ['Anambra West'],
+    'Anaocha':           ['Anaocha I', 'Anaocha II'],
+    'Awka North':        ['Awka North'],
+    'Awka South':        ['Awka South I', 'Awka South II'],
+    'Ayamelum':          ['Ayamelum'],
+    'Dunukofia':         ['Dunukofia'],
+    'Ekwusigo':          ['Ekwusigo'],
+    'Idemili North':     ['Idemili North I', 'Idemili North II'],
+    'Idemili South':     ['Idemili South I', 'Idemili South II'],
+    'Ihiala':            ['Ihiala I', 'Ihiala II'],
+    'Njikoka':           ['Njikoka I', 'Njikoka II'],
+    'Nnewi North':       ['Nnewi North'],
+    'Nnewi South':       ['Nnewi South'],
+    'Ogbaru':            ['Ogbaru I', 'Ogbaru II'],
+    'Onitsha North':     ['Onitsha North I', 'Onitsha North II'],
+    'Onitsha South':     ['Onitsha South I', 'Onitsha South II'],
+    'Orumba North':      ['Orumba North'],
+    'Orumba South':      ['Orumba South'],
+    'Oyi':               ['Oyi'],
+  },
+
+  // ──────────────────────────────────────────────────────────────────
+  // EDO — 24 constituencies across 18 LGAs
+  // ──────────────────────────────────────────────────────────────────
+  'Edo': {
+    'Oredo':             ['Oredo I', 'Oredo II'],
+    'Ikpoba-Okha':       ['Ikpoba-Okha I', 'Ikpoba-Okha II'],
+    'Egor':              ['Egor'],
+    'Orhionmwon':        ['Orhionmwon I', 'Orhionmwon II'],
+    'Ovia North-East':   ['Ovia North-East I', 'Ovia North-East II'],
+    'Ovia South-West':   ['Ovia South-West'],
+    'Owan East':         ['Owan East'],
+    'Owan West':         ['Owan West'],
+    'Akoko-Edo':         ['Akoko-Edo I', 'Akoko-Edo II'],
+    'Etsako East':       ['Etsako East'],
+    'Etsako West':       ['Etsako West I', 'Etsako West II'],
+    'Etsako Central':    ['Etsako Central'],
+    'Uhunmwonde':        ['Uhunmwonde'],
+    'Esan North-East':   ['Esan North-East'],
+    'Esan West':         ['Esan West I', 'Esan West II'],
+    'Esan Central':      ['Esan Central'],
+    'Esan South-East':   ['Esan South-East'],
+  },
+
 }
 
 /**

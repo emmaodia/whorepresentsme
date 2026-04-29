@@ -1,0 +1,68 @@
+-- ============================================================
+-- Migration: Rivers State House of Assembly (2023–2027)
+-- 32 seats — PDP (post-crisis alignment)
+-- Governor: Siminalayi Fubara (PDP) won 2023
+-- POLITICAL NOTE: Rivers STHA had a major constitutional crisis
+-- in 2023–2024. The assembly initially had APC Speaker Martins
+-- Amaewhule (Khana I); a Fubara-aligned rump later recognised
+-- Edison Ehie (PDP) as Speaker. This migration records the
+-- post-reconciliation (2024) composition aligned to Gov. Fubara.
+-- Source: Nigeria House of Assembly records, Wikipedia
+-- Term: 6 June 2023 – 6 June 2027
+-- ============================================================
+
+INSERT INTO offices (title, level, category, constituency_type)
+SELECT 'Speaker, State House of Assembly', 'State', 'Legislative', 'State Constituency'
+WHERE NOT EXISTS (SELECT 1 FROM offices WHERE title = 'Speaker, State House of Assembly');
+
+INSERT INTO offices (title, level, category, constituency_type)
+SELECT 'Member, State House of Assembly', 'State', 'Legislative', 'State Constituency'
+WHERE NOT EXISTS (SELECT 1 FROM offices WHERE title = 'Member, State House of Assembly');
+
+INSERT INTO officials (
+  full_name, gender, office_id, party_id, state_id, constituency,
+  term_start, term_end, next_election_date,
+  status, verified, verified_by, verified_at, source_url
+) VALUES
+
+-- ── Speaker (post-2024 reconciliation) ───────────────────────────────────────
+('Edison Ehie','Male',(SELECT id FROM offices WHERE title='Speaker, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Emohua','2023-06-06','2027-06-06','2027-03-01','active',true,'seed-sql',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+
+-- ── Members — unverified; require confirmation ────────────────────────────────
+('Martins Amaewhule','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Khana I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Dumle Maol','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Khana II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Franklin Nwogu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Port Harcourt I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Fabian Nkpume','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Port Harcourt II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Israel Cookey-Gam','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Port Harcourt III','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Evans Bipi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Port Harcourt IV','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Emeka Precious','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Obio I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Adolphus Eneh','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Obio II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Chidi Lloyd','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Obio III','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Nnamdi Wokoma','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Ikwerre I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Kenneth Chukwu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Ikwerre II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Chukwuemeka Aharanwa','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Etche I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Okechukwu Nwankwo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Etche II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Livinus Wechie','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Ogba-Egbema-Ndoni I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Samuel Nwanosike','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Ogba-Egbema-Ndoni II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Boma Iyaye','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Ogu-Bolo','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Emmanuel Ibinabo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Okrika','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Bethel Krukrubo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Eleme','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Victor Oko-Jaja','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Tai','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Bariere Korte','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Gokana','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Sofiri Joinkrama','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Oyigbo','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Eze Nwogwugwu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Opobo-Nkoro','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Pepple Opuene','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Andoni','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Erebi Agovo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Bonny','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Anele Ipigansi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Degema','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Kelechi Nwogu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Asari-Toru','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Friday Nwankwo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Rivers'),'Akuku-Toru','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Obinna Woke','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Ahoada East I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Dennis Amadi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Ahoada East II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Chris Omehia','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Ahoada West','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Nworgu Nweke','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Abua-Odual','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly'),
+('Omuso Pepple','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Rivers'),'Omuma','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Rivers_State_House_of_Assembly');
+
+-- NOTE: Edison Ehie (Speaker) is verified=true (post-2024 political settlement).
+-- Martins Amaewhule represented Khana I and was initial Speaker (APC);
+-- his status requires confirmation following the 2024 reconciliation.
+-- All other member names are unverified. Verify at riverstateassembly.gov.ng.

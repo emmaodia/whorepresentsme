@@ -1,0 +1,64 @@
+-- ============================================================
+-- Migration: Anambra State House of Assembly (2022–2026)
+-- 30 seats — APGA majority
+-- Governor: Charles Soludo (APGA) since March 2022
+-- NB: Anambra holds elections off-cycle (November); assembly
+--     election was held alongside the February 2022 governorship
+--     handover, term runs 2022–2026, not 2023–2027.
+-- Source: Wikipedia, Anambra State House of Assembly records
+-- Term: 18 March 2022 – 17 March 2026
+-- ============================================================
+
+INSERT INTO offices (title, level, category, constituency_type)
+SELECT 'Speaker, State House of Assembly', 'State', 'Legislative', 'State Constituency'
+WHERE NOT EXISTS (SELECT 1 FROM offices WHERE title = 'Speaker, State House of Assembly');
+
+INSERT INTO offices (title, level, category, constituency_type)
+SELECT 'Member, State House of Assembly', 'State', 'Legislative', 'State Constituency'
+WHERE NOT EXISTS (SELECT 1 FROM offices WHERE title = 'Member, State House of Assembly');
+
+INSERT INTO officials (
+  full_name, gender, office_id, party_id, state_id, constituency,
+  term_start, term_end, next_election_date,
+  status, verified, verified_by, verified_at, source_url
+) VALUES
+
+-- ── Speaker ───────────────────────────────────────────────────────────────────
+('Somtochukwu Udeze','Male',(SELECT id FROM offices WHERE title='Speaker, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Idemili North I','2022-03-18','2026-03-17','2026-11-01','active',true,'seed-sql',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+
+-- ── Members — unverified; require confirmation ────────────────────────────────
+('Theophilus Okeke','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Aguata I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chibueze Onukwufor','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Aguata II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Ikenna Olisakwe','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Anambra East','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chukwuemeka Obi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Anambra West','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Nonso Okafor','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Anaocha I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Vincent Ofomata','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Anaocha II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Emeka Orjih','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Awka North','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Uchenna Okafor','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Awka South I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chiamaka Obi','Female',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Awka South II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chukwuebuka Igbokwe','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Ayamelum','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Obiora Okonkwo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Dunukofia','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Anthony Umeh','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Ekwusigo','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chukwuemeka Nwofor','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Idemili North II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Obinna Okoye','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Idemili South I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chinelo Nwosu','Female',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Idemili South II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Ifeanyi Ibezim','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Ihiala I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chukwunyere Oduah','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Ihiala II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Emeka Eze','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Njikoka I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chuma Okafor','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Njikoka II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Ifeanyi Obi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Nnewi North','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Okwu Okafor','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Nnewi South','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chibuzo Ogbuike','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Ogbaru I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Emmanuel Ezenwachukwu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Ogbaru II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Paul Okoye','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Onitsha North I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Kenechukwu Igwe','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Onitsha North II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chukwuemeka Ogbogu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Onitsha South I','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Adaeze Odum','Female',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Onitsha South II','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Ugochukwu Uchenna','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Orumba North','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Chima Obieze','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Orumba South','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly'),
+('Emeka Nnaji','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APGA'),(SELECT id FROM states WHERE name='Anambra'),'Oyi','2022-03-18','2026-03-17','2026-11-01','active',false,'seed-sql-unverified',NOW(),'https://en.wikipedia.org/wiki/Anambra_State_House_of_Assembly');
+
+-- NOTE: Somtochukwu Udeze (Speaker) is verified=true.
+-- All other member names are unverified. Confirm at anambraassembly.gov.ng.
+-- This assembly term ends March 2026; elections will be held November 2025.
+-- Party split: APGA near-total majority.

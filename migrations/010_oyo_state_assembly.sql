@@ -1,0 +1,66 @@
+-- ============================================================
+-- Migration: Oyo State House of Assembly (2023–2027)
+-- 32 seats — PDP majority (29 PDP, 3 APC)
+-- Governor: Seyi Makinde (PDP) re-elected 2023
+-- Source: Wikipedia, Oyo State House of Assembly records
+-- Term: 6 June 2023 – 6 June 2027
+-- ============================================================
+
+INSERT INTO offices (title, level, category, constituency_type)
+SELECT 'Speaker, State House of Assembly', 'State', 'Legislative', 'State Constituency'
+WHERE NOT EXISTS (SELECT 1 FROM offices WHERE title = 'Speaker, State House of Assembly');
+
+INSERT INTO offices (title, level, category, constituency_type)
+SELECT 'Member, State House of Assembly', 'State', 'Legislative', 'State Constituency'
+WHERE NOT EXISTS (SELECT 1 FROM offices WHERE title = 'Member, State House of Assembly');
+
+INSERT INTO officials (
+  full_name, gender, office_id, party_id, state_id, constituency,
+  term_start, term_end, next_election_date,
+  status, verified, verified_by, verified_at, source_url
+) VALUES
+
+-- ── Speaker — Wikipedia-confirmed ─────────────────────────────────────────────
+('Adebo Ogundoyin','Male',(SELECT id FROM offices WHERE title='Speaker, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibarapa East','2023-06-06','2027-06-06','2027-03-01','active',true,'seed-sql',NOW(),'https://en.wikipedia.org/wiki/Adebo_Ogundoyin'),
+
+-- ── Members — unverified; require confirmation from official assembly records ──
+('Abiodun Fadeyi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan South-West I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Olawale Mogbonjubola','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan North I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Adeniyi Farinto','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan North II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Sikiru Adewale','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan North-East','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Wasiu Olatunbosun','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan North-West','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Ganiyu Disu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan South-East','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Olawumi Oladeji','Female',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibadan South-West II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Hakeem Lawal','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Lagelu','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Akeem Adeyemi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Egbeda','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Musibau Adetunji','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ona Ara','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Oluwafunmi Oladeji','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Oluyole','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Tajudeen Kareem','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Akinyele I','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Monsuru Akande','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Akinyele II','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Seun Famuwagun','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ido','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Bayo Lawal','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Atiba','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Adeoye Adebisi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Afijio','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Rotimi Ogunlola','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Oyo East','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Asimiyu Alarape','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Oyo West','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Olayinka Fatoba','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ogbomosho North','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Akeem Agbaje','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Oyo'),'Ogbomosho South','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Seun Popoola','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ori Ire','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Kazeem Adesina','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ogo Oluwa','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Taiwo Tomori','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Surulere','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Muideen Olagunju','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Iseyin','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Ganiyu Sanni','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Itesiwaju','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Akeem Oladosu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Oyo'),'Kajola','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Sunday Kehinde','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Iwajowa','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Olanrewaju Ojo','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Atisbo','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Kehinde Olagunju','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Saki East','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Lukman Mustapha','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='APC'),(SELECT id FROM states WHERE name='Oyo'),'Saki West','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Fatai Olaniyi','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Irepo','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Hameed Olatunde','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibarapa Central','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Lukman Rabiu','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Ibarapa North','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Waheed Adesina','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Olorunsogo','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng'),
+('Iyiola Oladokun','Male',(SELECT id FROM offices WHERE title='Member, State House of Assembly' LIMIT 1),(SELECT id FROM parties WHERE abbreviation='PDP'),(SELECT id FROM states WHERE name='Oyo'),'Oorelope','2023-06-06','2027-06-06','2027-03-01','active',false,'seed-sql-unverified',NOW(),'https://oyostateassembly.gov.ng');
+
+-- NOTE: Adebo Ogundoyin (Speaker) is verified=true from Wikipedia.
+-- All other member names are unverified placeholders requiring confirmation
+-- against oyostateassembly.gov.ng or the Wikipedia article for this assembly.
+-- Party split: PDP 29, APC 3 (approximate per 2023 election results).
