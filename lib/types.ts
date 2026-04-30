@@ -51,6 +51,7 @@ export interface Official {
   bills_sponsored: number | null
   motions_moved: number | null
   attendance_pct: number | null
+  first_elected: string | null
   created_at: string
   updated_at: string
 }
