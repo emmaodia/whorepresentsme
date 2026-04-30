@@ -260,6 +260,7 @@ function OfficialRow({
             <Field label="State"         value={o.states?.name} />
             <Field label="Term start"    value={fmtDate(o.term_start)} />
             <Field label="Term end"      value={fmtDate(o.term_end)} />
+            {o.first_elected && <TenureField firstElected={o.first_elected} />}
             <div>
               <p className="text-xs text-gray-400 mb-1">Next election</p>
               <ElectionCountdown date={o.next_election_date} size="md" />
@@ -378,6 +379,33 @@ function calcAge(dob?: string | null) {
     age--
   }
   return `${age} years`
+}
+
+function TenureField({ firstElected }: { firstElected: string }) {
+  const start = new Date(firstElected)
+  const today = new Date()
+  let years = today.getFullYear() - start.getFullYear()
+  const m = today.getMonth() - start.getMonth()
+  if (m < 0 || (m === 0 && today.getDate() < start.getDate())) years--
+  years = Math.max(years, 0)
+
+  const label = years === 1 ? '1 year' : `${years} years`
+  const color =
+    years >= 12 ? { bg: '#fee2e2', text: '#b91c1c' } :
+    years >= 8  ? { bg: '#ffedd5', text: '#c2410c' } :
+    years >= 4  ? { bg: '#fef9c3', text: '#a16207' } :
+                  { bg: '#dcfce7', text: '#15803d' }
+  return (
+    <div>
+      <p className="text-xs text-gray-400 mb-0.5">Time in office</p>
+      <span
+        className="inline-block text-sm font-medium px-2 py-0.5 rounded-full"
+        style={{ background: color.bg, color: color.text }}
+      >
+        {label}
+      </span>
+    </div>
+  )
 }
 
 function fmtDate(d?: string | null) {
