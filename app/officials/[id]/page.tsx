@@ -175,6 +175,9 @@ export default async function OfficialPage({ params }: Props) {
           <InfoCard label="Party"          value={party?.name} />
           <InfoCard label="Term start"     value={fmtDate(official.term_start)} />
           <InfoCard label="Term end"       value={fmtDate(official.term_end)} />
+          {official.first_elected && (
+            <TenureCard firstElected={official.first_elected} />
+          )}
         </div>
 
         {/* ── Bio ───────────────────────────────────────────────────────── */}
@@ -336,6 +339,36 @@ function ContactRow({ label, value, href }: { label: string; value: string; href
       </a>
     </div>
   )
+}
+
+function TenureCard({ firstElected }: { firstElected: string }) {
+  const years = calcTenureYears(firstElected)
+  const label = years === 1 ? '1 year' : `${years} years`
+  const color =
+    years >= 12 ? { bg: '#fee2e2', text: '#b91c1c' } :   // red-100 / red-700
+    years >= 8  ? { bg: '#ffedd5', text: '#c2410c' } :   // orange-100 / orange-700
+    years >= 4  ? { bg: '#fef9c3', text: '#a16207' } :   // yellow-100 / yellow-700
+                  { bg: '#dcfce7', text: '#15803d' }      // green-100 / green-700
+  return (
+    <div className="bg-gray-50 rounded-lg p-3">
+      <p className="text-xs text-gray-400 mb-1">Time in office</p>
+      <span
+        className="inline-block text-sm font-medium px-2 py-0.5 rounded-full"
+        style={{ background: color.bg, color: color.text }}
+      >
+        {label}
+      </span>
+    </div>
+  )
+}
+
+function calcTenureYears(firstElected: string): number {
+  const start = new Date(firstElected)
+  const today = new Date()
+  let years = today.getFullYear() - start.getFullYear()
+  const m = today.getMonth() - start.getMonth()
+  if (m < 0 || (m === 0 && today.getDate() < start.getDate())) years--
+  return Math.max(years, 0)
 }
 
 function calcAge(dob?: string | null) {
