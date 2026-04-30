@@ -7,7 +7,7 @@ const OFFICIALS_SELECT = `
   term_start, term_end, next_election_date,
   phone, official_email, official_website, twitter_handle,
   bio, status, verified, source_url,
-  bills_sponsored, motions_moved, attendance_pct,
+  bills_sponsored, motions_moved, attendance_pct, first_elected,
   created_at, updated_at,
   offices ( id, title, level, category, constituency_type ),
   parties ( id, name, abbreviation, color_hex ),
