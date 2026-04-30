@@ -12,9 +12,16 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+export const dynamicParams = true
+
 export async function generateStaticParams() {
-  const states = await getStatesAdmin()
-  return states.map(s => ({ slug: s.slug }))
+  try {
+    const states = await getStatesAdmin()
+    return states.map(s => ({ slug: s.slug }))
+  } catch {
+    // Supabase env vars not available at build time — pages rendered on demand via ISR
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
